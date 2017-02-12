@@ -7,24 +7,21 @@ A simple tool for visualization of polysomnographic data
 - Spectrogram (requires Matlab Signal Processing Toolbox) 
 - Hypnogram (*.txt / *.hyp)
 
-Release notes version 0.1
+## Release notes
+Current version: 0.1
 - added support for [EDF format](http://www.edfplus.info/) using [edfread](https://fr.mathworks.com/matlabcentral/fileexchange/31900-edfread?requestedDomain=www.mathworks.com) by Brett Shoelson
 - added support for [Elan file format](http://elan.lyon.inserm.fr/)
 - added single-channel amplitude
 - added support for hypnogram in Elan .hyp or .txt files
 
-# Tutorial 
+## Tutorial 
 
 Please see this short tutorial [on my website](https://raphaelvallat.github.io/SleepViz.html)
 
-# Examples
+## Examples
 
 Example include EDF files from two different sources
 
 - [PhysioNet Sleep-EDF Database](https://physionet.org/physiobank/database/sleep-edfx/)
 - [DREAMS Sleep Spindles Database](http://www.tcts.fpms.ac.be/~devuyst/Databases/DatabaseSpindles/)
 - Elan: Nap polysomnographic data from my PhD experiment
-
-
-
-Please see this short tutorial [on my website](https://raphaelvallat.github.io/SleepViz.html)
