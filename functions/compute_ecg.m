@@ -75,6 +75,13 @@ end
 
 ECG.nb_peaks_min = ECG.nb_peaks(1:2:length(ECG.nb_peaks)) + ECG.nb_peaks(2:2:length(ECG.nb_peaks)) ;
 
+% Save ECG structure
+outfile  = [ SV.path 'ECG_' SV.filename '.mat' ];
+save(outfile, 'ECG');
+
+fprintf('\nECG mat file saved at:\n%s\n', outfile);
+
+
 % PLOT
 plot_ecg( ECG, SV );
 
