@@ -1,11 +1,16 @@
 # SleepViz
 
+![SleepViz](sleepviz_logo.png)
+
 SleepViz is a simple Matlab graphical user interface for visualization of polysomnographic data.
 
 3 plotting components :
 - Polysomnographic data (EEG, EOG, EMG, ECG)
 - Spectrogram (requires Matlab Signal Processing Toolbox) 
 - Hypnogram (*.txt / *.hyp)
+
+## Doc
+Please see this tutorial [on my website](https://raphaelvallat.github.io/SleepViz.html)
 
 ## Release notes
 Current version: 0.2
@@ -19,14 +24,10 @@ vers. 0.1
 - added single-channel amplitude
 - added support for hypnogram in Elan .hyp or .txt files
 
-## Tutorial 
-
-Please see this short tutorial [on my website](https://raphaelvallat.github.io/SleepViz.html)
 
 ## Examples
-
 Example include EDF files from two different sources
 
 - [PhysioNet Sleep-EDF Database](https://physionet.org/physiobank/database/sleep-edfx/)
 - [DREAMS Sleep Spindles Database](http://www.tcts.fpms.ac.be/~devuyst/Databases/DatabaseSpindles/)
-- Elan: Nap polysomnographic data from my PhD experiment
+- Elan: Nap polysomnographic data from my PhD

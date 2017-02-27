@@ -123,7 +123,8 @@ set(b, 'Callback', @affiche);
         ad_deb          =   (get(sld,'Value')-1) * (30 * sfreq);
         ad_fin          =   ad_deb + (sfreq*30 - 1);
         adresse         =   ad_deb:ad_fin;
-        pages           =   [num2str((ad_deb / (30 * sfreq))), '/', num2str(nb_pages)];
+        pages           =   [num2str((ad_deb / (30 * sfreq)) + 1), '/', num2str(nb_pages)];
+        
         REMs_comp1      =   find(ad_deb < locs_comp1 & locs_comp1 < ad_fin);
         REMS_comp2      =   find(ad_deb < locs_comp2 & locs_comp2 < ad_fin);
         REMs_conc       =   find(ad_deb < idx_unique_conc & idx_unique_conc < ad_fin);
@@ -133,20 +134,38 @@ set(b, 'Callback', @affiche);
         sum_unique      =   ['Unique    :   ', num2str(length(REMs_comp1) + length(REMS_comp2) - length(REMs_conc)) ];
         
         
-        set(p1, 'YData', comp1_filt(adresse));       % ICA comp 1
-        set(p3, 'YData', comp2_filt(adresse));       % ICA comp 2
-        
-        if flag == 1
-            set(p2, 'YData', overlay_REMs_comp1(adresse));
-            set(p4, 'YData', overlay_REMs_comp2(adresse));
-        elseif flag == 0
-            set(p2, 'XData', locs_comp1(REMs_comp1)-ad_deb);
-            set(p2, 'YData', comp1_filt(locs_comp1(REMs_comp1)));
+        if ad_deb > 0;
+            set(p1, 'YData', comp1_filt(adresse));       % ICA comp 1
+            set(p3, 'YData', comp2_filt(adresse));       % ICA comp 2
+            % Overlay
+            if flag == 1
+                set(p2, 'YData', overlay_REMs_comp1(adresse));
+                set(p4, 'YData', overlay_REMs_comp2(adresse));
+            elseif flag == 0
+                set(p2, 'XData', locs_comp1(REMs_comp1)-ad_deb);
+                set(p2, 'YData', comp1_filt(locs_comp1(REMs_comp1)));
+                
+                set(p4, 'XData', locs_comp2(REMS_comp2)-ad_deb);
+                set(p4, 'YData', comp2_filt(locs_comp2(REMS_comp2)));
+            end
             
-            set(p4, 'XData', locs_comp2(REMS_comp2)-ad_deb);
-            set(p4, 'YData', comp2_filt(locs_comp2(REMS_comp2)));
-        end
-        
+        elseif ad_deb ==0;
+            set(p1, 'YData', comp1_filt(adresse+1));       % ICA comp 1
+            set(p3, 'YData', comp2_filt(adresse+1));       % ICA comp 2
+            
+            if flag == 1
+                set(p2, 'YData', overlay_REMs_comp1(adresse+1));
+                set(p4, 'YData', overlay_REMs_comp2(adresse+1));
+            elseif flag == 0
+                set(p2, 'XData', locs_comp1(REMs_comp1)-ad_deb);
+                set(p2, 'YData', comp1_filt(locs_comp1(REMs_comp1)));
+                
+                set(p4, 'XData', locs_comp2(REMS_comp2)-ad_deb);
+                set(p4, 'YData', comp2_filt(locs_comp2(REMS_comp2)));
+            end
+            
+        end;
+                
         % Update textbox
         set(textbox2, 'String', nb_REMs_comp1);
         set(textbox3, 'String', nb_REMs_comp2);

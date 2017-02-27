@@ -50,8 +50,8 @@ for i = 1:nb_chan
     H{i} = plot(SV.m_data(SV.channels(i), adresse), 'k', 'LineWidth', 0.75);
     
     box off
-    grid off
-    %set(gca, 'Color', [ 0.99 0.99 0.99 ]);
+    grid on
+    set(gca, 'Color', [ 0.99 0.99 0.99 ]);
     set(gca, 'GridColor', [ 0.3 0.3 0.3 ], 'GridAlpha', 0.1);
     set(gca, 'XColor', 'w');
     
@@ -230,7 +230,7 @@ end
     function table_amplitude(~,~)
         
         f = figure;
-        t = uitable(f)
+        t = uitable(f);
         d = {};
         for ij = 1:length(SV.channels)
             d = [d; {SV.hdr.label{SV.channels(ij)}, SV.plot.amplitude(ij)}];

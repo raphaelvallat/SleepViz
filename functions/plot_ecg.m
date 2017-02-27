@@ -48,19 +48,18 @@ function plot_ecg( ECG, SV )
         subplot(2,1,2)
         plot(SV.hypno, 'k', 'LineWidth', 1);
         ylabel('Sleep stage');
-        xlabel('Time (30sec-epochs)');
+        xlabel('Time (min)');
         box off
         grid on
         set(gca, 'Ylim', [-1 5 ]);
         set(gca,'Ydir','reverse')
         set(gca, 'YTick', [-1 0 1 2 3 4 5 ]);
         set(gca, 'YTickLabel', { 'Art', 'W', 'N1', 'N2', 'N3', 'REM', ''});
+        set(gca, 'XTickLabel', '');
         set(gca, 'TickLength', [0.002 0]);
         len_hyp     = length(SV.hypno);
         len_hyp_ds  = len_hyp / SV.plot.DefaultTimePeriod;
         set(gca, 'Xlim', [1 len_hyp]);
-        set(gca, 'XTick', [ 1 len_hyp ]);
-        set(gca, 'XTickLabel', [ 1 len_hyp_ds/2 len_hyp_ds ]);
         set(gca, 'XMinorGrid', 'on');
     end;
     

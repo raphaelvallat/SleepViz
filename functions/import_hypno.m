@@ -1,7 +1,7 @@
-function [ data, hypname ] = import_hypno( EDF )
+function [ data, hypname ] = import_hypno( SV )
 
 % Import hypnogram
-[ hypname, hyppath ] = uigetfile({'*.txt';'*.hyp'}, 'Select Hypno File');
+[ hypname, hyppath ] = uigetfile([ SV.path '*'], 'Select Hypno File');
 fprintf('HYP File\t\t:\t %s\n', hypname)
 
 [~, ~, ext] = fileparts([hyppath hypname]);
@@ -12,7 +12,7 @@ if strcmp(ext, '.txt');
     hypno   = importdata( [hyppath, hypname] );
     hypno   = hypno.data;
     %.Resample to get one value per second
-    s_hypno = (length(EDF.m_data) / EDF.ds_freq) / length(hypno);
+    s_hypno = (length(SV.m_data) / SV.ds_freq) / length(hypno);
     hypno   = kron(hypno, ones(s_hypno, 1));
     
     %..Switch values in vector
@@ -27,8 +27,8 @@ if strcmp(ext, '.txt');
     N3  = find(hypno == 1 | hypno == 0);
     REM = find(hypno == 4);
     
-    hyp_tmp = -ones(length(hypno), 1);
-    hyp_tmp(W) = 0; hyp_tmp(N1) = 1; hyp_tmp(N2) = 2;
+    hyp_tmp     = -ones(length(hypno), 1);
+    hyp_tmp(W)  = 0; hyp_tmp(N1) = 1; hyp_tmp(N2) = 2;
     hyp_tmp(N3) = 3; hyp_tmp(REM) = 4;
     
     data = hyp_tmp;
