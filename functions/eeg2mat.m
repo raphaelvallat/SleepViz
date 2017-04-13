@@ -119,12 +119,6 @@ v_NAMCHAN_Ent=ent_text(11:10+s_nb_channel_all);
 
 
 
-
-
-
-
-
-
 for i=1:s_nb_channel_all
     MinAn=sscanf(cell2mat(ent_text(OFF_SET1+i)),'%f');
     MaxAn=sscanf(cell2mat(ent_text(OFF_SET2+i)),'%f');
@@ -154,7 +148,6 @@ end
 for i=1:length(v_channel_list)
     v_label_selected{i}=v_label_all{v_channel_list(i)};
 end
-
 
 
 %OPENING the .EEG file
@@ -187,8 +180,6 @@ end
 
 m_readbrut=fread(f_in,[s_nb_channel_all,NbSample_AftLatency],formread);
 m_data=diag(Gain(v_channel_list))*m_readbrut(v_channel_list,:); % Data values after multiplication by Gain
-
-
 
 
 % Read Num2 channels to compute m_events matrix

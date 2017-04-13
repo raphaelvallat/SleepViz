@@ -1,5 +1,3 @@
-![SleepViz](sleepviz_logo.png)
-
 SleepViz is a simple Matlab graphical user interface for visualization of polysomnographic data.
 
 3 plotting components :
